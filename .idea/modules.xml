@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Pycharm.iml" filepath="$PROJECT_DIR$/.idea/Pycharm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../djangogirls/.idea/djangogirls.iml" filepath="$PROJECT_DIR$/../djangogirls/.idea/djangogirls.iml" />
     </modules>
   </component>
 </project>

@@ -1,6 +1,6 @@
 from django import forms
 
-from product.models import Category, Product
+from product.models import Category, Product, ProductImage
 
 
 # class ProductForm(forms.Form):
@@ -23,3 +23,15 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description', 'price', 'category']
+
+    def clean_price(self):
+        price = self.cleaned_data.get('price')
+        if price <= 0:
+            raise forms.ValidationError('Цена должна быть положительной')
+        return price
+
+
+class ProductImageForm(forms.ModelForm):
+    class Meta:
+        model = ProductImage
+        fields = ['image']

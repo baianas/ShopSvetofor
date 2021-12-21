@@ -6,9 +6,12 @@
 </head>
 <body>
     <h1>Добавление товаров</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        <input type="file" name="product_image" accept="image/*" >
+        <input type="file" name="product_image" accept="image/*" >
+        <input type="file" name="product_image" accept="image/*" >
         <button type="submit">Создать</button>
     </form>
 </body>
