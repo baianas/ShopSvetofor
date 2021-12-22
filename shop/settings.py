@@ -147,8 +147,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'shermatovbaianas@gmail.com'
-EMAIL_HOST_PASSWORD = Твой пароль
+EMAIL_HOST_PASSWORD = 'Shermatovgoogle12345'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'products-list'
+LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'index'

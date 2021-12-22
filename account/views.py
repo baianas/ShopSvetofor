@@ -83,11 +83,19 @@ class ForgotPasswordView(View):
 
 
 class ForgotPasswordCompleteView(View):
-    form = ForgotPasswordCompleteForm
+    form_class = ForgotPasswordCompleteForm
     template_name = 'account/forgot_password_complete.html'
 
     def get(self, request, *args, **kwargs):
-        pass
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
-        pass
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('product-list'))
+        return render(request, self.template_name, {'form': form})
+
+
+# TODO: закончить с вёрсткой

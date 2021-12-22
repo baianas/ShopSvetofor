@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{product.name}}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} {{ product.name }} {% endblock title %}
+
+{% block body %}
     <h1>{{ product.name }}</h1>
     <p>Описание: {{ product.description }}</p>
     <p>Цена: {{ product.price }}</p>
@@ -21,5 +19,4 @@
   {% endif %}
     <p><a role="button" href="{% url 'update-product' product.id %}">Редактировать</a>
         <a role="button" href="{% url 'delete-product' product.id %}">Удалить</a></p>
-</body>
-</html>
+{% endblock body %}

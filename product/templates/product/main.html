@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Listing</title>
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block body %}
 <div>
     <div class="products-main">
         {% for product in products %}
@@ -35,5 +28,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+{% endblock body %}

@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+# TODO: создать модели Cart, CartItem
+# TODO: сделать оформление заказа
+# TODO: Отправлять инвойс на почту

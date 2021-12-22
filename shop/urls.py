@@ -18,10 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from product.views import ProductListView, ProductDetailsView, CreateProductView, UpdateProductView, DeleteProductView
+from product.views import ProductListView, ProductDetailsView, CreateProductView, UpdateProductView, DeleteProductView, \
+    IndexPageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', IndexPageView.as_view(), name='index'),
     path('account/', include('account.urls')),
     path('products/', include('product.urls')),
 

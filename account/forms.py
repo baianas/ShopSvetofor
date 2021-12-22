@@ -99,3 +99,10 @@ class ForgotPasswordCompleteForm(forms.Form):
         if pass1 != pass2:
             raise forms.ValidationError('Пароли не совпадают')
         return self.cleaned_data
+
+    def save(self):
+        code = self.cleaned_data.get('code')
+        password = self.cleaned_data.get('password')
+        user = User.objects.get(activation_code=code)
+        user.set_password(password)
+        user.save()

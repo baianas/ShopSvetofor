@@ -11,5 +11,7 @@
         {{ form.as_p }}
         <button type="submit">Войти</button>
     </form>
+<h3>Если у Вас нет аккаунта, Вы можете <a href="{% url 'register' %}">зарегистрироваться</a></h3>
+<h3><a href="{% url 'forgot-password' %}">Забыли пароль?</a></h3>
 </body>
 </html>
