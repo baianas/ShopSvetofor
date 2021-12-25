@@ -17,6 +17,11 @@
   {% else %}
     <img src="https://via.placeholder.com/300">
   {% endif %}
+    <form method="post" action="{% url 'add-to-cart' product.id %}">
+        {% csrf_token %}
+        {{ cart_form }}
+        <button type="submit">Добавить в корзину</button>
+    </form>
     <p><a role="button" href="{% url 'update-product' product.id %}">Редактировать</a>
         <a role="button" href="{% url 'delete-product' product.id %}">Удалить</a></p>
 {% endblock body %}

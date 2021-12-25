@@ -1,10 +1,12 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.db.models import Q
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
+from order.forms import AddToCartForm
 from product.forms import ProductForm, ProductImageForm
 from product.models import Product, ProductImage
 
@@ -19,13 +21,18 @@ class ProductListView(ListView):
     queryset = Product.objects.all()
     template_name = 'product/products_list.html'
     context_object_name = 'products'
-    paginate_by = 12
+    paginate_by = 5
 
 
 class ProductDetailsView(DetailView):
     queryset = Product.objects.all()
     template_name = 'product/product_details.html'
     context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['cart_form'] = AddToCartForm()
+        return context
 
 
 ImagesFormSet = modelformset_factory(ProductImage,
@@ -79,6 +86,14 @@ class IndexPageView(TemplateView):
     template_name = 'product/index.html'
 
 
+class SearchResultsView(View):
+    def get(self, request):
+        queryset = None
+        search_param = request.GET.get('search')
+        if search_param is not None:
+            queryset = Product.objects.filter(Q(name__icontains=search_param) |
+                                              Q(description__icontains=search_param))
+        return render(request, 'product/search.html', {'products': queryset})
 # TODO: закончить с вёрсткой
 
 
